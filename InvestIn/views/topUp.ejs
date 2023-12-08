@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #555;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px #888888;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="number"], button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 3px;
+        }
+        button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+        button[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        a {
+            text-decoration: none;
+            color: #555;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<%- include('partials/home')  %>
+<body>
+    <h1>Top Up for <%= user.name %></h1>
+    <form action="/topUp" method="post">
+        <label for="money">Money</label><br>
+        <input type="number" id="money" name="money" placeholder="Ex: 10000000"><br>
+        <button type="submit">Save</button>
+    </form> 
+</body>
+</html>    

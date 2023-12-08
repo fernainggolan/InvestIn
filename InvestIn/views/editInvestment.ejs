@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Investment</title>
+</head>
+<style>
+    body {
+        background-color: #f2f2f2;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    h1 {
+        color: #4CAF50;
+        text-align: center;
+    }
+    form {
+        background-color: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 20px;
+        width: 50%;
+        margin: 0 auto;
+    }
+    label {
+        display: block;
+        font-weight: bold;
+        margin-top: 20px;
+    }
+    input[type=text], input[type=number], select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+    }
+    button[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+    }
+    button[type=submit]:hover {
+        background-color: #45a049;
+    }
+</style>
+<body>
+    <%- include('partials/home')  %>
+    <h1>Edit Investment</h1>
+    <%- include('partials/error')  %>
+    <form action="/<%= invest.id %>/editInvestment/" method="post">
+    <label for="investmentName">Investment Name</label><br>
+    <input type="text" id="investmentName" name="investmentName" value="<%= invest.investmentName %>" ><br><br>
+    <label for="investmentAmount">Investment Amount</label><br>
+    <input type="number" id="investmentAmount" name="investmentAmount" value="<%= invest.investmentAmount %>"><br><br>
+    <label for="investmentType">Investment Type</label><br>
+    <select name="investmentType">
+        <option selected disabled>Choose One</option>
+        <% [`Low Risk`,`Middle Risk`,`High Risk`].forEach(element => { %>
+        <option value="<%= element %>"<%= (invest.investmentType == element) ? 'selected' :" " %>><%= element %></option>
+        <% }) %>
+    </select><br><br>
+    <label for="CompanyId">Pilih Company</label><br>
+        <select name="CompanyId">
+        <option selected disabled>Choose One</option>
+    <% companydata.forEach(el  => {%>
+        <option value="<%=el.id%>"<%=(invest.CompanyId == el.id) ? 'selected' : " "  %>><%= el.companyName %></option>
+    <%})%>
+    </select><br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>

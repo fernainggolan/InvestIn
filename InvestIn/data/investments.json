@@ -1,0 +1,76 @@
+[{
+    "investmentName": "Astoria Financial Corporation",
+    "investmentAmount": 319821,
+    "investmentType": "Low Risk",
+    "CompanyId": 3
+  }, {
+    "investmentName": "Nicolet Bankshares Inc.",
+    "investmentAmount": 143209,
+    "investmentType": "Low Risk",
+    "CompanyId": 1
+  }, {
+    "investmentName": "Tenaris S.A.",
+    "investmentAmount": 385246,
+    "investmentType": "Low Risk",
+    "CompanyId": 4
+  }, {
+    "investmentName": "THL Credit, Inc.",
+    "investmentAmount": 494498,
+    "investmentType": "Low Risk",
+    "CompanyId": 2
+  }, {
+    "investmentName": "Aegean Marine Petroleum Network Inc.",
+    "investmentAmount": 242677,
+    "investmentType": "Low Risk",
+    "CompanyId": 5
+  }, {
+    "investmentName": "Spark Therapeutics, Inc.",
+    "investmentAmount": 484370,
+    "investmentType": "High Risk",
+    "CompanyId": 4
+  }, {
+    "investmentName": "ContraVir Pharmaceuticals Inc",
+    "investmentAmount": 317441,
+    "investmentType": "High Risk",
+    "CompanyId": 5
+  }, {
+    "investmentName": "Five Oaks Investment Corp.",
+    "investmentAmount": 150502,
+    "investmentType": "High Risk",
+    "CompanyId": 2
+  }, {
+    "investmentName": "Western Asset/Claymore U.S Treasury Inflation Prot Secs Fd 2",
+    "investmentAmount": 446720,
+    "investmentType": "High Risk",
+    "CompanyId": 2
+  }, {
+    "investmentName": "Jazz Pharmaceuticals plc",
+    "investmentAmount": 459097,
+    "investmentType": "High Risk",
+    "CompanyId": 3
+  }, {
+    "investmentName": "VeriSign, Inc.",
+    "investmentAmount": 177324,
+    "investmentType": "Middle Risk",
+    "CompanyId": 3
+  }, {
+    "investmentName": "Voya Natural Resources Equity Income Fund",
+    "investmentAmount": 388638,
+    "investmentType": "Middle Risk",
+    "CompanyId": 1
+  }, {
+    "investmentName": "Hugoton Royalty Trust",
+    "investmentAmount": 305731,
+    "investmentType": "Middle Risk",
+    "CompanyId": 3
+  }, {
+    "investmentName": "Winnebago Industries, Inc.",
+    "investmentAmount": 244660,
+    "investmentType": "Middle Risk",
+    "CompanyId": 2
+  }, {
+    "investmentName": "Avista Healthcare Public Acquisition Corp.",
+    "investmentAmount": 233798,
+    "investmentType": "Middle Risk",
+    "CompanyId": 3
+  }]

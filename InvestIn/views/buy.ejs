@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Up</title>
+</head>
+<%- include('partials/home')  %>
+<style>
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="number"] {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+    }
+
+    button[type="submit"] {
+      background-color: #008CBA;
+      color: #fff;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #006080;
+    }
+  </style>
+<body>
+    <h1>Top Up for <%= user.name %></h1>
+    <form action="/topUp" method="post">
+        <label for="money">Money</label><br>
+        <input type="number" id="money" name="money" placeholder="Ex: 10000000"><br><br>
+        <select name="id" id="id">
+            <option selected value="<%= user.Wallet.id %>"><%= user.Wallet.id %></option>
+        </select>
+        
+        <button type="submit">Confirm Buy</button>
+    </form> 
+</body>
+</html>

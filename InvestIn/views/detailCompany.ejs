@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Detail</title>
+    <style>
+        body {
+            background-color: #f1f1f1;
+        }
+    h1 {
+        color: #4CAF50;
+    }
+
+    img {
+            max-width: 300px;
+            max-height: 200px;
+            display: block;
+            margin: auto;
+        }
+
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    th {
+        background-color: #4CAF50;
+        color: white;
+        font-weight: bold;
+        padding: 8px;
+        text-align: left;
+    }
+
+    td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #qrcode {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+</style>
+
+</head>
+<body>
+    
+    <%- include('partials/home')  %>
+    <h1>Detail Company</h1>
+    <p><%=company.logo%></p>
+    <img src="<%=company.companyLogo%>" alt="Company logo">
+    <p>Company Name : <%=company.companyName%></p>
+    <p>Email : <%=company.email%></p>
+    <p>Address : <%=company.address%></p>
+    <p>Description : <%=company.description%></p>
+    Company Qr:    <div id="qrcode"></div>
+        <script type="text/javascript">
+        new QRCode(document.getElementById("qrcode"), "http://localhost:3000/<%=company.id%>/companyDetail");
+        </script>
+    <table border="1">
+        <thead>
+            <th>No.</th>
+            <th>Investment Name</th>
+            <th>InvestmentAmount/items</th>
+            <th>InvestmentType</th>
+            <th>Created At</th>
+        </thead>
+        <tbody>
+        <% company.Investments.forEach((el,index) => {%>
+            <td><%=++index%></td>
+            <td><%=el.investmentName%></td>
+            <td><%=formatRupiah(el.investmentAmount)%></td>
+            <td><%=el.investmentType%></td>
+            <td><%=el.createdDate%></td>
+            </tbody>
+        <% }) %>
+    </table>
+</body>
+</html>

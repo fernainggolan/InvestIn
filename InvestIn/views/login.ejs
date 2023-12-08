@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: #555;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px #888888;
+        }
+        label {
+            font-weight: bold;
+        }
+        input[type="text"], input[type="password"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+        a {
+            text-decoration: none;
+            color: #555;
+            display: inline-block;
+            margin-top: 10px;
+            margin-right: 10px;
+        }
+        button {
+            background-color: #555;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+            display: inline-block;
+        }
+        button:hover {
+            background-color: #333;
+        }
+        p {
+            color: red;
+        }
+        .top-left-buttons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-left-buttons">
+        <a href="/">
+            <button>Home</button>
+        </a>
+        <a href="/register">
+            <button>Register</button>
+        </a>
+    </div>
+    <h1>Login Form</h1>
+    <%if (error){%>
+        <p><%= error %></p>
+    <%}%>
+    <form action="/login" method="post">
+        <label for="email">Email</label><br>
+        <input type="text" name="email" id="email" placeholder="Insert your email"><br>
+        <label for="password">Password</label><br>
+        <input type="password" name="password" id="password" placeholder="Insert your password"><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

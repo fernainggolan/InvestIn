@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment List</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .profile {
+        background-color: #f2f2f2;
+        border: 1px solid #ddd;
+        padding: 10px;
+        margin-bottom: 20px;
+    }
+
+    .profile h3 {
+        margin-top: 0;
+    }
+
+    .profile p {
+        margin: 5px 0;
+    }
+
+    .profile p:first-of-type {
+        font-weight: bold;
+    }
+
+    h1, h3 {
+        text-align: center;
+    }
+
+    table {
+        margin: auto;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    th {
+        background-color: #eee;
+    }
+
+    button {
+        padding: 5px 10px;
+        border: none;
+        background-color: #4CAF50;
+        color: white;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #3e8e41;
+    }
+
+    
+</style>
+<body>
+    <h3>Profiles</h3>
+    <p>Role : <%=user.name%></p>
+    <p>Role : <%=user.role%></p>
+    <p>total Investment :<%= user.UserInvestments.length %></p>
+    <% if(!user.Wallet){ %>
+        <a href="/addWallet"><button>Add Wallet</button></a>
+    <% }else{ %>
+        <p>Money : <%=formatRupiah(user.Wallet.money)%> <a href="/topUp"><button>TopUp</button></a></p> 
+    <% } %>
+    <a href="/investments"><button>All Investment List</button></a>
+    <h1> User Investment List</h1>
+    <table border="1">
+        <thead>
+            <th>No.</th>
+            <th>Investment Name</th>
+            <th>InvestmentAmount/items</th>
+            <th>Total Stock</th>
+            <th>InvestmentType</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+        <% investments.forEach((el,index) => {%>
+            <td><%=++index%></td>
+            <td><%=el.Investment.investmentName%></td>
+            <td><%=formatRupiah(el.Investment.investmentAmount)%></td>
+            <td><%= el.totalStock %></td>
+            <td><%=el.Investment.investmentType%></td>
+            <td>
+                <% if (el.totalStock<2) { %>
+                    <a href="/<%=el.Investment.id%>/destroy"><button>Sell</button></a>
+                <% } %>
+
+                <% if (el.totalStock>1) { %>
+                    <a href="/<%=el.Investment.id%>/sell"><button>Sell</button></a>
+                <% } %>
+                    
+                <a href="/<%=el.Investment.id%>/buy"><button>Buy</button></a>
+                </td>
+            </tbody>
+        <% }) %>
+    </table>
+</body>
+</html>

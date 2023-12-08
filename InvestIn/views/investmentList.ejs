@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Investment List</title>
+</head>
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    th, td {
+        text-align: left;
+        padding: 8px;
+    }
+    th {
+        background-color: #04AA6D;
+        color: white;
+    }
+    tr:nth-child(even) {background-color: #f2f2f2;}
+    button {
+        background-color: #04AA6D;
+        border: none;
+        color: white;
+        padding: 8px 16px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <%- include('partials/home')  %>
+    <h3>Profiles</h3>
+    <p>Nama User    : <%=user.name%></p>
+    <p>Role         : <%=user.role%></p>
+    <% if(user.role == "User"){ %>
+        <% if(!user.Wallet){ %>
+            <a href="/addWallet"><button>Add Wallet</button></a>
+        <% }else{ %>
+            <p>Money : <%=formatRupiah(user.Wallet.money)%> <a href="/topUp"><button>TopUp</button></a></p> 
+        <% } %>
+    <a href="/userInvestments"><button>User Investment List</button></a>
+    <% }else { %>
+        <a href="/addInvestment"><button>Add Investment</button></a>
+    <% } %>
+    <h1>Investment List</h1>
+    <%if (error){%>
+        <p style="color: red;"><%= error %></p>
+    <% } %>
+    <form action="" method="get">
+        <label for="search">Search Investment</label>
+        <input type="text" name="search">
+        <input type="submit" value="submit">
+    </form>
+    <table border="1">
+        <thead>
+            <th>No.</th>
+            <th>Investment Name</th>
+            <th>InvestmentAmount/items</th>
+            <th>InvestmentType</th>
+            <th>Company Name</th>
+            <th>Action</th>
+        </thead>
+        <tbody>
+        <% invest.forEach((el,index) => {%>
+            <td><%=++index%></td>
+            <td><%=el.investmentName%></td>
+            <td><%=formatRupiah(el.investmentAmount)%></td>
+            <td><%=el.investmentType%></td>
+            <td><a href="/<%=el.Company.id%>/companyDetail"><%=el.Company.companyName%></a></td>
+            <td>
+                <% if(user.role == "Admin" && !el.UserInvestments.length) { %>
+                    <a href="/<%=el.id%>/delete"><button>Delete</button></a>
+                    <a href="/<%=el.id%>/editInvestment"><button>Edit</button></a>
+                <% }else if (user.role == "User"){ %>
+                    <a href="/<%=el.id%>/buy"><button>Buy</button></a>
+                <% }else{ %>
+                    cannot be deleted
+                <% } %>
+                </td>
+            </tbody>
+        <% }) %>
+    </table>
+</body>
+</html>

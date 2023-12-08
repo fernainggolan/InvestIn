@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Investment</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-size: 16px;
+        }
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        input, select {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            padding: 10px;
+            width: 15%;
+        }
+        button[type=submit] {
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            font-size: 16px;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/home')  %>
+    <h1>Add Investment</h1>
+    <%- include('partials/error')  %>
+    <form action="/addInvestment" method="post">
+    <label for="investmentName">Investment Name</label><br>
+    <input type="text" id="investmentName" name="investmentName" placeholder="Input investment name here"><br><br>
+    <label for="investmentAmount">Investment Amount</label><br>
+    <input type="number" id="investmentAmount" name="investmentAmount" placeholder="Input Investment Amount here"><br><br>
+    <label for="investmentType">Investment Type</label><br>
+    <select name="investmentType">
+        <option selected disabled>Choose One</option>
+        <% [`Low Risk`,`Middle Risk`,`High Risk`].forEach(el => {%>
+            <option value="<%=el%>"><%=el%></option>
+        <%})%>
+    </select><br><br>
+    <label for="CompanyId">Pilih Company</label><br>
+        <select name="CompanyId">
+        <option selected disabled>Choose One</option>
+    <% company.forEach(el => {%>
+        <option value="<%=el.id%>"><%=el.companyName%></option>
+    <%})%>
+    </select><br><br>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
